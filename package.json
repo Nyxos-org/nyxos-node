@@ -1,0 +1,16 @@
+{
+  "name": "nyxos-node",
+  "version": "0.1.0",
+  "description": "Nyxos node client — contribute your GPU to the Nyxos decentralized inference network and earn $NYXOS.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "homepage": "https://nyxos.dev",
+  "repository": { "type": "git", "url": "https://github.com/Nyxos-org/nyxos-node" },
+  "bugs": { "url": "https://github.com/Nyxos-org/nyxos-node/issues" },
+  "keywords": ["nyxos", "depin", "ai", "inference", "gpu", "ollama", "decentralized"],
+  "scripts": {
+    "start": "bun run src/main.ts",
+    "build": "bun build ./src/main.ts --compile --outfile dist/nyxos-node",
+    "build:all": "bun run scripts/build-binaries.ts"
+  }
+}

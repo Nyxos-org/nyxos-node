@@ -1,0 +1,27 @@
+name: release
+
+# Builds the node-client single binaries for all platforms and attaches them
+# to the GitHub Release when a v* tag is pushed. install.sh fetches these.
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Cross-compile binaries
+        run: bun run scripts/build-binaries.ts
+      - name: Publish release with binaries
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/nyxos-node-*
+          generate_release_notes: true
